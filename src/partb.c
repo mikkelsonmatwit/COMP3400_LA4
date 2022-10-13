@@ -13,10 +13,10 @@ int main(int argc, char* argv[]) {
     //printf("argc: %d\n", argc);
     
     if (argc == 3) {
-        printf("): %s\n", argv[0]);
-        printf("1: %s\n", argv[1]);
-        if(strcmp(argv[1], "lines") == 0) {
-            char* args[] = {"wc", "-l", argv[0], NULL};
+        //printf("): %s\n", argv[0]);
+        //printf("1: %s\n", argv[1]);
+        if(strcmp(argv[2], "lines") == 0) {
+            char* args[] = {"wc", "-l", argv[1], NULL};
             int pid = fork();
             if(pid > 0) {
                 int status = 0;
@@ -27,8 +27,8 @@ int main(int argc, char* argv[]) {
                 printf("Child done\n");
                 exit(status);
             }
-        } else if(strcmp(argv[1], "words") == 0) {
-            char* args[] = {"wc", "-w", argv[0], NULL};
+        } else if(strcmp(argv[2], "words") == 0) {
+            char* args[] = {"wc", "-w", argv[1], NULL};
             int pid = fork();
             if(pid > 0) {
                 int status = 0;
