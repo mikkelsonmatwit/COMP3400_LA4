@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
         if(strcmp(argv[2], "lines") == 0) {
             char* args[] = {"wc", "-l", argv[1], NULL};
             int pid = fork();
+            printf("pid: %d\n", pid);
             if(pid > 0) {
                 printf("enter parent process");
                 int status = 0;
