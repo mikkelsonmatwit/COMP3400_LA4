@@ -21,16 +21,13 @@ int main(int argc, char* argv[]) {
             printf("pid: %d\n", pid);
             if(pid > 0) {
                 printf("enter parent process");
+                wait(NULL);
                 exit(0);
-                //int status = 0;
-                //wait(&status);
-                //exit(0);
             } else if(pid == 0) {
                 printf("enter child process");
-                //int status = execv("/usr/bin/wc", args);
+                execv("/usr/bin/wc", args);
                 printf("Child done\n");
                 exit(0);
-                //exit(status);
             }
         } else if(strcmp(argv[2], "words") == 0) {
             char* args[] = {"wc", "-w", argv[1], NULL};
