@@ -13,21 +13,27 @@ int main(int argc, char* argv[]) {
     // TODO: Complete this code and document
     //check if there is 1 argument
     if(argc != 2) {
-        printf("USAGE:/n/tparta WORD");
+        printf("USAGE:\n  parta WORD");
         exit(1);
     } else {
-        int fork_ret = fork();
-        if(fork_ret == 0) {
-            int status = execv("/usr/bin/grep", argv);
-            exit(status);
-        } else if(fork_ret > 0) {
-            int status;
+        char* args[] = {"grep", "-q", argv[0], NULL};
+        int pid = fork();
+        if(pid > 0) {
+            int status = 0;
             wait(&status);
             if(status == 0) {
-                printf("%s found", argv[1]);
+                printf("%s found", argv[0]);
             } else {
-                printf("%s not found", argv[1]);
+                printf("%s not found", argv[0]);
             }
+            exit(0);
+            
+        } else if(pid == 0) {
+            int status = execv("/usr/bin/grep", args);
+            exit(status);
+        } else {
+            printf("fork error");
+            exit(1);
         }
 
     }

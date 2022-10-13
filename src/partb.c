@@ -10,6 +10,27 @@
  * although you still need document major blocks (ifs, fors, etc.)
  */
 int main(int argc, char* argv[]) {
-    // TODO: Complete this code and document
-    return 0;
+    if(argc != 2) {
+        printf("USAGE:\n  partb FILENAME words|lines");
+        exit(1);
+    } else {
+        if(strcmp(argv[1], "lines") == 0) {
+            char* args[] = {"wc", "-l", argv[0], NULL};
+            int pid = fork();
+            if(pid > 0) {
+                int status = 0;
+                wait(&status);
+                exit(status);
+            } else if(pid == 0) {
+                int status = execv("/usr/bin/wc", args);
+                printf("Child done\n");
+                exit(status);
+            }
+        } else if(strcmp(argv[1], "words") == 0) {
+
+        } else {
+            printf("USAGE:\n  partb FILENAME words|lines");
+            exit(1);
+        }
+    }
 }
