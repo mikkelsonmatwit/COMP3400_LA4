@@ -21,6 +21,7 @@ int main(int argc, char* argv[]) {
             printf("pid: %d\n", pid);
             if(pid > 0) {
                 printf("enter parent process");
+                exit(0);
                 int status = 0;
                 wait(&status);
                 exit(0);
