@@ -27,7 +27,17 @@ int main(int argc, char* argv[]) {
                 exit(status);
             }
         } else if(strcmp(argv[1], "words") == 0) {
-
+            char* args[] = {"wc", "-w", argv[0], NULL};
+            int pid = fork();
+            if(pid > 0) {
+                int status = 0;
+                wait(&status);
+                exit(status);
+            } else if(pid == 0) {
+                int status = execv("/usr/bin/wc", args);
+                printf("Child done\n");
+                exit(status);
+            }
         } else {
             printf("USAGE:\n  partb FILENAME words|lines");
             exit(1);
