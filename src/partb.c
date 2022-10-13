@@ -18,13 +18,13 @@ int main(int argc, char* argv[]) {
         if(strcmp(argv[2], "lines") == 0) {
             char* args[] = {"wc", "-l", argv[1], NULL};
             int pid = fork();
-            printf("pid: %d\n", pid);
+            //printf("pid: %d\n", pid);
             if(pid > 0) {
-                printf("enter parent process");
+                printf("Child done");
                 wait(NULL);
                 exit(0);
             } else if(pid == 0) {
-                printf("enter child process");
+                //printf("enter child process");
                 execv("/usr/bin/wc", args);
                 printf("Child done\n");
                 exit(0);
