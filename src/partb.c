@@ -33,13 +33,13 @@ int main(int argc, char* argv[]) {
             char* args[] = {"wc", "-w", argv[1], NULL};
             int pid = fork();
             if(pid > 0) {
-                int status = 0;
-                wait(&status);
+                printf("Child done");
+                wait(NULL);
                 exit(0);
             } else if(pid == 0) {
-                int status = execv("/usr/bin/wc", args);
+                execv("/usr/bin/wc", args);
                 printf("Child done\n");
-                exit(status);
+                exit(0);
             }
         } else {
             printf("USAGE:\n  partb FILENAME words|lines");
