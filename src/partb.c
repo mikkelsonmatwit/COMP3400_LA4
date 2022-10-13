@@ -10,11 +10,9 @@
  * although you still need document major blocks (ifs, fors, etc.)
  */
 int main(int argc, char* argv[]) {
-    printf("argc: %d", argc);
-    if(argc != 3) {
-        printf("USAGE:\n  partb FILENAME words|lines");
-        exit(1);
-    } else {
+    printf("argc: %d\n", argc);
+    
+    if (argc == 3) {
         if(strcmp(argv[1], "lines") == 0) {
             char* args[] = {"wc", "-l", argv[0], NULL};
             int pid = fork();
@@ -43,5 +41,8 @@ int main(int argc, char* argv[]) {
             printf("USAGE:\n  partb FILENAME words|lines");
             exit(1);
         }
+    } else {
+        printf("USAGE:\n  partb FILENAME words|lines");
+        exit(1);
     }
 }
