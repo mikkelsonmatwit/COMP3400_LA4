@@ -19,10 +19,12 @@ int main(int argc, char* argv[]) {
             char* args[] = {"wc", "-l", argv[1], NULL};
             int pid = fork();
             if(pid > 0) {
+                printf("enter parent process");
                 int status = 0;
                 wait(&status);
                 exit(status);
             } else if(pid == 0) {
+                printf("enter child process");
                 int status = execv("/usr/bin/wc", args);
                 printf("Child done\n");
                 exit(status);
