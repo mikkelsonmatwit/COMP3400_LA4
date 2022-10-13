@@ -10,9 +10,11 @@
  * although you still need document major blocks (ifs, fors, etc.)
  */
 int main(int argc, char* argv[]) {
-    printf("argc: %d\n", argc);
+    //printf("argc: %d\n", argc);
     
     if (argc == 3) {
+        printf("): %s\n", argv[0]);
+        printf("1: %s\n", argv[1]);
         if(strcmp(argv[1], "lines") == 0) {
             char* args[] = {"wc", "-l", argv[0], NULL};
             int pid = fork();
