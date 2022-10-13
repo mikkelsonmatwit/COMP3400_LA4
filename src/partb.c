@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
                 printf("enter parent process");
                 int status = 0;
                 wait(&status);
-                exit(status);
+                exit(0);
             } else if(pid == 0) {
                 printf("enter child process");
                 int status = execv("/usr/bin/wc", args);
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
             if(pid > 0) {
                 int status = 0;
                 wait(&status);
-                exit(status);
+                exit(0);
             } else if(pid == 0) {
                 int status = execv("/usr/bin/wc", args);
                 printf("Child done\n");
