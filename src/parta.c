@@ -16,9 +16,7 @@ int main(int argc, char* argv[]) {
         printf("USAGE:\n  parta WORD");
         exit(1);
     } else {
-        printf("%s", argv[0]);
-        printf("%s", argv[1]);
-        char* args[] = {"grep", "-q", argv[1], NULL};
+        char* args[] = {"grep", "-q", argv[1], "tests/file1.txt", NULL};
         int pid = fork();
         if(pid > 0) {
             int status = 0;
