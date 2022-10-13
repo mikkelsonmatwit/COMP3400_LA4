@@ -18,15 +18,15 @@ int main(int argc, char* argv[]) {
     } else {
         printf("%s", argv[0]);
         printf("%s", argv[1]);
-        char* args[] = {"grep", "-q", argv[0], argv[1], NULL};
+        char* args[] = {"grep", "-q", argv[1], NULL};
         int pid = fork();
         if(pid > 0) {
             int status = 0;
             wait(&status);
             if(status == 0) {
-                printf("%s found", argv[0]);
+                printf("%s found", argv[1]);
             } else {
-                printf("%s not found", argv[0]);
+                printf("%s not found", argv[1]);
             }
             exit(0);
             
