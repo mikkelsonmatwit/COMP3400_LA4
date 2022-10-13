@@ -9,16 +9,13 @@ setup() {
 ## Helper function that compares program output with the contents
 # of a file. If the two differ, return non-negative exit
 compare() {
-    set +e
     output="$1"
     expected_file="$2"
     command -v "delta" > /dev/null
     if [ "$?" -eq 0 ]
     then
-        set -e
         DELTA_PAGER=cat delta -s <(echo "$output") "$expected_file"
     else
-        set -e
         diff -y <(echo "$output") "$expected_file"
     fi
 }
