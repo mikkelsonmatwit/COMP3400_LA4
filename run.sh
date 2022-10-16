@@ -1,7 +1,7 @@
 #!/bin/sh
 
 command="$1"
-b="$2"
+command2="$2"
 
 help() {
     echo "USAGE:"
@@ -36,6 +36,8 @@ problem_b() {
 
 
 
+if[ "$command2" = "problemb"]
+	problem_b
 if [ "$command" = "help" ]
 then
     help
@@ -53,9 +55,6 @@ then
 elif [ "$command" = "clean" ]
 then
     rm -rf build
-elif [ "$b" = "problemb" ]
-then
-    problem_b
 else
     help
 fi
