@@ -1,6 +1,7 @@
 #!/bin/sh
 
 command="$1"
+b="$2"
 
 help() {
     echo "USAGE:"
@@ -29,6 +30,9 @@ run_tests_b() {
 clean() {
     rm -rf build
 }
+problem_b() {
+    echo "hello world"
+}
 
 
 
@@ -49,6 +53,9 @@ then
 elif [ "$command" = "clean" ]
 then
     rm -rf build
+elif [ "$b" = "problemb" ]
+then
+    problem_b
 else
     help
 fi
