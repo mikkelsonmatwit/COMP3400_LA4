@@ -20,25 +20,27 @@ int main(int argc, char* argv[]) {
             int pid = fork();
             //printf("pid: %d\n", pid);
             if(pid > 0) {
+                int status = 0;
+                wait(&status);
                 printf("Child done");
-                wait(NULL);
                 exit(0);
             } else if(pid == 0) {
                 //printf("enter child process");
                 execv("/usr/bin/wc", args);
-                printf("Child done\n");
+                //printf("Child done\n");
                 exit(0);
             }
         } else if(strcmp(argv[2], "words") == 0) {
             char* args[] = {"wc", "-w", argv[1], NULL};
             int pid = fork();
             if(pid > 0) {
+                int status = 0;
+                wait(&status);
                 printf("Child done");
-                wait(NULL);
                 exit(0);
             } else if(pid == 0) {
                 execv("/usr/bin/wc", args);
-                printf("Child done\n");
+                //printf("Child done\n");
                 exit(0);
             }
         } else {
